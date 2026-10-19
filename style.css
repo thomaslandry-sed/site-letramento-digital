@@ -3917,3 +3917,144 @@ button:disabled {
         transparent
     );
 }
+
+
+/* Fluxo animado de IA */
+#fluxoIA {
+    padding: 32px 20px;
+    background: #f4f8fb;
+    border-radius: 18px;
+}
+
+#fluxoIA .fluxo-etapas {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    position: relative;
+}
+
+/* Linha que conecta as etapas */
+#fluxoIA .fluxo-etapas::before {
+    content: "";
+    position: absolute;
+    top: 29px;
+    left: 7%;
+    right: 7%;
+    height: 3px;
+    background: #d4e0e9;
+}
+
+#fluxoIA .etapa {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    border: 0;
+    background: transparent;
+    color: #607587;
+    cursor: pointer;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+#fluxoIA .etapa-icone {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #e1eaf1;
+    font-size: 25px;
+    transition: all .45s ease;
+}
+
+#fluxoIA .etapa.concluida .etapa-icone {
+    background: #5e89ac;
+    box-shadow: 0 0 0 4px #dceaf4;
+}
+
+#fluxoIA .etapa.ativa .etapa-icone {
+    background: #315b73;
+    box-shadow: 0 0 0 6px #c5dbe9;
+    transform: scale(1.12);
+    animation: pulsoFluxo 1.8s infinite;
+}
+
+#fluxoIA .etapa.ativa {
+    color: #244c66;
+}
+
+@keyframes pulsoFluxo {
+    50% {
+        box-shadow: 0 0 0 11px
+            rgba(94, 137, 172, .12);
+    }
+}
+
+#fluxoIA .fluxo-descricao {
+    margin-top: 30px;
+    min-height: 60px;
+    padding: 18px;
+    text-align: center;
+    background: white;
+    color: #315b73;
+    border-radius: 12px;
+    border: 1px solid #d9e6ef;
+    animation: aparecerFluxo .4s ease;
+}
+
+@keyframes aparecerFluxo {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#fluxoIA .fluxo-controles {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#fluxoIA .fluxo-controles button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #315b73;
+    color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    #fluxoIA .fluxo-etapas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px 8px;
+    }
+
+    #fluxoIA .fluxo-etapas::before {
+        display: none;
+    }
+
+    #fluxoIA .etapa {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #fluxoIA *,
+    #fluxoIA *::before,
+    #fluxoIA *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

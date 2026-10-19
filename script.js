@@ -869,3 +869,86 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 })();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const fluxo = document.getElementById("fluxoIA");
+    if (!fluxo) return;
+
+    const etapas = [...fluxo.querySelectorAll(".etapa")];
+    const descricao = document.getElementById("fluxoDescricao");
+    const pausar = document.getElementById("pausarFluxo");
+    const reiniciar = document.getElementById("reiniciarFluxo");
+
+    const textos = [
+        "Tudo começa com uma ideia pedagógica.",
+        "O professor transforma a ideia em um prompt claro.",
+        "A IA gera uma primeira versão do material.",
+        "O professor analisa criticamente o resultado.",
+        "O conteúdo é adaptado à realidade da turma.",
+        "A atividade está pronta para aplicação!"
+    ];
+
+    let indice = 0;
+    let intervalo = null;
+
+    function mostrarEtapa(numero) {
+        indice = numero;
+
+        etapas.forEach((etapa, i) => {
+            etapa.classList.toggle("ativa", i === indice);
+            etapa.classList.toggle("concluida", i < indice);
+            etapa.setAttribute(
+                "aria-current",
+                i === indice ? "step" : "false"
+            );
+        });
+
+        descricao.textContent = textos[indice];
+
+        descricao.style.animation = "none";
+        void descricao.offsetWidth;
+        descricao.style.animation = "";
+    }
+
+    function parar() {
+        clearInterval(intervalo);
+        intervalo = null;
+        pausar.textContent = "▶ Continuar";
+    }
+
+    function iniciar() {
+        clearInterval(intervalo);
+
+        intervalo = setInterval(() => {
+            mostrarEtapa((indice + 1) % etapas.length);
+        }, 3000);
+
+        pausar.textContent = "⏸ Pausar";
+    }
+
+    etapas.forEach((etapa, i) => {
+        etapa.addEventListener("click", () => {
+            mostrarEtapa(i);
+            parar();
+        });
+    });
+
+    pausar.addEventListener("click", () => {
+        if (intervalo) parar();
+        else iniciar();
+    });
+
+    reiniciar.addEventListener("click", () => {
+        mostrarEtapa(0);
+        iniciar();
+    });
+
+    mostrarEtapa(0);
+
+    if (!window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches) {
+        iniciar();
+    }
+});

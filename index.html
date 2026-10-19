@@ -191,7 +191,7 @@
     <!-- Etapas do trabalho com IA -->
     <div class="intro-workflow">
       <h3>Fluxo de uso da IA no trabalho do professor</h3>
-
+<!-- 
       <div class="flow">
         <span>💡 Ideia inicial</span>
         <span>✍️ Prompt detalhado</span>
@@ -200,7 +200,52 @@
         <span>🎯 Adaptação ao contexto</span>
         <span>📚 Atividade final</span>
       </div>
-    </div>
+    </div> -->
+    
+<div class="fluxo-ia" id="fluxoIA">
+  <div class="fluxo-etapas">
+    <button class="etapa ativa" data-etapa="0">
+      <span class="etapa-icone">💡</span>
+      <span>Ideia inicial</span>
+    </button>
+
+    <button class="etapa" data-etapa="1">
+      <span class="etapa-icone">✍️</span>
+      <span>Criar prompt</span>
+    </button>
+
+    <button class="etapa" data-etapa="2">
+      <span class="etapa-icone">🤖</span>
+      <span>Gerar com IA</span>
+    </button>
+
+    <button class="etapa" data-etapa="3">
+      <span class="etapa-icone">🔎</span>
+      <span>Revisão crítica</span>
+    </button>
+
+    <button class="etapa" data-etapa="4">
+      <span class="etapa-icone">🎯</span>
+      <span>Adaptação</span>
+    </button>
+
+    <button class="etapa" data-etapa="5">
+      <span class="etapa-icone">📚</span>
+      <span>Atividade final</span>
+    </button>
+  </div>
+
+  <div class="fluxo-descricao" id="fluxoDescricao"
+       aria-live="polite">
+    Tudo começa com uma ideia pedagógica.
+  </div>
+
+  <div class="fluxo-controles">
+    <button id="reiniciarFluxo">↺ Reiniciar</button>
+    <button id="pausarFluxo">⏸ Pausar</button>
+  </div>
+</div>
+
 
     <!-- Acesso às ferramentas -->
     <div class="intro-tools">
