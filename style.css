@@ -4058,3 +4058,49 @@ button:disabled {
         transition: none !important;
     }
 }
+
+
+/* Lâmpada animada nas observações */
+#prompts-letramento .tip strong {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+/* Ícone de lâmpada */
+#prompts-letramento .tip strong .lampada-tip {
+    color: #64748b;
+    font-size: 20px;
+    animation: acenderLampada 3s ease-in-out infinite;
+}
+
+/* Efeito de acender e apagar */
+@keyframes acenderLampada {
+    0%, 15%, 85%, 100% {
+        color: #64748b;
+        filter: none;
+    }
+
+    30%, 70% {
+        color: #facc15;
+        filter:
+            drop-shadow(0 0 5px #facc15)
+            drop-shadow(0 0 12px rgba(250, 204, 21, 0.8));
+    }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    #prompts-letramento .tip strong .lampada-tip {
+        animation: none;
+        color: #facc15;
+    }
+}
+
+/* Título da observação em uma linha separada */
+#prompts-letramento .tip strong:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}

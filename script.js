@@ -952,3 +952,18 @@ document.addEventListener("DOMContentLoaded", () => {
         iniciar();
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(
+        "#prompts-letramento .tip strong"
+    ).forEach(elemento => {
+
+        if (!elemento.textContent.includes("💡")) return;
+
+        elemento.innerHTML = elemento.innerHTML.replace(
+            "💡",
+            '<i class="fa-solid fa-lightbulb lampada-tip" aria-hidden="true"></i>'
+        );
+
+    });
+});
