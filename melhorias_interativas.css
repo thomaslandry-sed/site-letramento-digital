@@ -1,0 +1,96 @@
+/* ===== MELHORIAS INTERATIVAS COM JAVASCRIPT ===== */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #38bdf8, #2563eb, #14b8a6);
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.js-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+
+.js-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.prompt-search-area {
+  width: min(100% - 32px, 1000px);
+  margin: 1.5rem auto 2rem;
+}
+
+.prompt-search {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  background: #fff;
+  color: #1e293b;
+  font: inherit;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+.prompt-search:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+.search-feedback {
+  min-height: 1.2em;
+  margin: 0.6rem 0 0;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1500;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #1d4ed8;
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.2);
+}
+
+.back-to-top:hover {
+  background: #1e40af;
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal,
+  .js-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
