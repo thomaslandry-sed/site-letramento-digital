@@ -967,3 +967,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".letramento-prompt pre").forEach(pre => {
+        let texto = pre.textContent;
+
+        // Protege caracteres especiais do HTML
+        texto = texto
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+
+        // **Texto** vira negrito
+        texto = texto.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+        // #, ##, ### etc. viram títulos em negrito
+        texto = texto.replace(
+            /^(#{1,6})\s+(.+)$/gm,
+            (_, hashes, titulo) =>
+                `<strong class="prompt-heading">${titulo}</strong>`
+        );
+
+        // Linhas que começam com números viram negrito
+        texto = texto.replace(
+            /^(\s*\d+[\.\-\)]\s+.+)$/gm,
+            '<strong class="prompt-heading">$1</strong>'
+        );
+
+        pre.innerHTML = texto;
+    });
+});
+
