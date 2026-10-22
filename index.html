@@ -49,45 +49,22 @@
 <header class="site-header">
   <div class="header-container">
 
-    <a class="brand" href="#" aria-label="Página inicial">
-      <span class="brand-title">
-        Formação de Letramento Digital <span class="brand-year">2026</span>
+    <a class="brand" href="#inicio" aria-label="Formação de Letramento Digital 2026, voltar ao início">
+      <span class="brand-logo" aria-hidden="true">
+        <img src="logo-sc.png" alt="" width="691" height="502" decoding="async">
       </span>
-
-      <span class="brand-subtitle">
-        Coordenadoria Regional de Educação de Dionísio Cerqueira
-      </span>
-
-      <span class="brand-institution">
-        Núcleo de Tecnologias Educacionais
+      <span class="brand-copy">
+        <span class="brand-title">
+          Formação de Letramento Digital <span class="brand-year">2026</span>
+        </span>
+        <span class="brand-subtitle">
+          Coordenadoria Regional de Educação de Dionísio Cerqueira
+        </span>
+        <span class="brand-institution">
+          Núcleo de Tecnologias Educacionais
+        </span>
       </span>
     </a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Abrir menu de navegação"
-      aria-controls="main-navigation"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav
-      class="main-navigation"
-      id="main-navigation"
-      aria-label="Navegação principal"
-    >
-      <a href="#prompts-letramento">Prompts 4º Encontro</a>
-      <a href="#mod1">Plano de Aula</a>
-      <a href="#mod2">Modo Canvas</a>
-      <a href="#mod3">Criatividade <span class="nav-separator">·</span> Gamificação</a>
-      <a href="#mod4">Pesquisa</a>
-      <a href="#mod5">Arquivos</a>
-      <a href="#mod6">Gems</a>
-    </nav>
 
     <!-- <div class="social-links" aria-label="Redes sociais">
       <a
@@ -120,6 +97,33 @@
 
   </div>
 </header>
+
+<!-- Navegação lateral fora do cabeçalho. No celular, abre como painel. -->
+<button class="menu-toggle" type="button" aria-label="Abrir menu de navegação"
+        aria-controls="main-navigation" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-backdrop" aria-hidden="true"></div>
+<nav class="main-navigation" id="main-navigation" aria-label="Navegação principal">
+  <button type="button" class="sidebar-collapse" aria-label="Recolher menu lateral" aria-controls="main-navigation" aria-expanded="true" title="Recolher menu"><i class="fa-solid fa-angles-left" aria-hidden="true"></i><span>Recolher menu</span></button>
+  <button type="button" class="sidebar-close-mobile" aria-label="Fechar navegação"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <div class="sidebar-heading">
+    <span class="sidebar-eyebrow">NAVEGAÇÃO</span>
+    <strong>Explore a formação</strong>
+    <p>Conteúdos e recursos para sua prática pedagógica.</p>
+  </div>
+  <div class="sidebar-links">
+    <a href="#inicio"><i class="fa-solid fa-house" aria-hidden="true"></i><span>Início</span></a>
+    <a href="#prompts-letramento"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i><span>Prompts 4º Encontro</span></a>
+    <a href="#mod1"><i class="fa-solid fa-book-open" aria-hidden="true"></i><span>Plano de Aula</span></a>
+    <a href="#mod2"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i><span>Modo Canvas</span></a>
+    <a href="#mod3"><i class="fa-solid fa-dice" aria-hidden="true"></i><span>Criatividade e Gamificação</span></a>
+    <a href="#mod4"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Pesquisa</span></a>
+    <a href="#mod5"><i class="fa-solid fa-folder-open" aria-hidden="true"></i><span>Arquivos</span></a>
+    <a href="#mod6"><i class="fa-solid fa-gem" aria-hidden="true"></i><span>Gems</span></a>
+  </div>
+  <div class="sidebar-footer">NTE · Dionísio Cerqueira <span>2026</span></div>
+</nav>
 
 <!-- <section class="intro">
   <div class="container">
@@ -2565,7 +2569,7 @@ Dica de ouro: na aba conhecimento acrescente documentos norteadores para auxilia
     <p>
       &copy; 2026
       <span class="footer-divider">|</span>
-      Professor Tiago Junior Gobetti
+      NTE - Dionísio Cerqueira
     </p>
 
     <a href="#inicio" class="footer-back-top">
@@ -2590,7 +2594,6 @@ Dica de ouro: na aba conhecimento acrescente documentos norteadores para auxilia
   </div>
 </div>
 
-<script src="script.js"></script>
 
 </body>
 </html>
