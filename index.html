@@ -12,6 +12,52 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="melhorias_interativas.css">
   <script src="script.js" defer></script>
+  <style>
+    /* Botão de videoaulas no header da página inicial */
+    .site-header .header-video-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-shrink: 0;
+      margin-left: auto;
+      padding: 13px 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      font: 600 .86rem 'Poppins', sans-serif;
+      line-height: 1.45;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 5px 18px rgba(37,99,235,.23);
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .site-header .header-video-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 23px rgba(37,99,235,.35);
+      background: #2563eb;
+    }
+    .site-header .header-video-btn:focus-visible {
+      outline: 3px solid #93c5fd;
+      outline-offset: 3px;
+    }
+    @media (max-width: 760px) {
+      .site-header .header-video-btn {
+        flex: 1 1 100%;
+        width: 100%;
+        margin: 4px 0 0;
+        white-space: normal;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .site-header .header-video-btn { transition: none; }
+      .site-header .header-video-btn:hover { transform: none; }
+    }
+    /* Mantém o carrossel visível abaixo do cabeçalho fixo */
+  #gemsCarouselTrack { scroll-margin-top: 150px; }
+</style>
+
 
 </head>
 <body>
@@ -64,6 +110,13 @@
           Núcleo de Tecnologias Educacionais
         </span>
       </span>
+    </a>
+
+    <!-- Acesso às videoaulas do Google Workspace -->
+    <a href="videos-workspace.html" class="header-video-btn" aria-label="Assistir às videoaulas sobre as ferramentas do Google Workspace for Education">
+      <i class="fa-solid fa-circle-play" aria-hidden="true"></i>
+      <span>Videoaulas Google Workspace</span>
+      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
     </a>
 
     <!-- <div class="social-links" aria-label="Redes sociais">
@@ -120,7 +173,7 @@
     <a href="#mod3"><i class="fa-solid fa-dice" aria-hidden="true"></i><span>Criatividade e Gamificação</span></a>
     <a href="#mod4"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Pesquisa</span></a>
     <a href="#mod5"><i class="fa-solid fa-folder-open" aria-hidden="true"></i><span>Arquivos</span></a>
-    <a href="#mod6"><i class="fa-solid fa-gem" aria-hidden="true"></i><span>Gems</span></a>
+    <a href="#gemsCarouselTrack"><i class="fa-solid fa-gem" aria-hidden="true"></i><span>Gems</span></a>
   </div>
   <div class="sidebar-footer">NTE · Dionísio Cerqueira <span>2026</span></div>
 </nav>
@@ -1626,7 +1679,7 @@ Não utilize conhecimento externo.</pre>
 </section>
 
 
-<section id="mod6" class="module alt">
+<section id="mod6-prompts" class="module alt">
   <div class="container">
     <h2>Módulo 6: Criação de Gems - acesse clicando no canto esquerdo da tela inicial do Gemini na opção "Gems"</h2>
     <h3> Objetivo: Criar e ou utilizar "mini-aplicativos" dentro do Gemini para tarefas recorrentes. Isso economiza tempo de digitar prompts longos toda vez.</h3>
@@ -2049,7 +2102,7 @@ Não utilize conhecimento externo.</pre>
 </section>
 
 <!-- MÓDULO 6 -->
-<section id="mod6" class="module alt">
+<section id="mod6-prompts-legado" class="module alt">
   <div class="container">
     <h2>Módulo 6: Criação de Gems - acesse clicando no canto esquerdo da tela inicial do Gemini na opção "Gems"</h2>
     <h3>Objetivo: Criar e ou utilizar "mini-aplicativos" dentro do Gemini para tarefas recorrentes. Isso economiza tempo de digitar prompts longos toda vez.</h3>
@@ -2402,19 +2455,37 @@ Dica de ouro: na aba conhecimento acrescente documentos norteadores para auxilia
 
 </div>
 
-    <!-- Orientação final -->
-    <div class="gems-footer">
-      <div class="gems-footer-icon" aria-hidden="true">
-        <i class="fa-solid fa-graduation-cap"></i>
+    <!-- Orientação final e contador de visitas -->
+    <div class="gems-final-row">
+      <div class="gems-footer">
+        <div class="gems-footer-icon" aria-hidden="true">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <p>
+          <strong>A IA apoia. O professor transforma.</strong>
+          <span>
+            Analise as respostas, verifique as informações e adapte
+            cada sugestão ao contexto e às necessidades dos estudantes.
+          </span>
+        </p>
       </div>
 
-      <p>
-        <strong>A IA apoia. O professor transforma.</strong>
-        <span>
-          Analise as respostas, verifique as informações e adapte
-          cada sugestão ao contexto e às necessidades dos estudantes.
-        </span>
-      </p>
+      <!-- O JavaScript do contador fica em script.js -->
+      <div class="visitas-container">
+        <div class="visitas-card">
+          <div class="visitas-icon" aria-hidden="true">
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="visitas-info">
+            <span class="visitas-label">VISITAS À PÁGINA</span>
+            <div class="visitas-numero" id="contador-visitas" aria-live="polite">
+              <span class="visitas-loading"></span>
+            </div>
+            <span class="visitas-legenda">Explorando o conhecimento juntos!</span>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

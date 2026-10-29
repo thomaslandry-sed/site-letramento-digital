@@ -4378,3 +4378,291 @@ section[id], .module[id] { scroll-margin-top: 115px; }
 @media (prefers-reduced-motion: reduce) {
   body, .main-navigation, .sidebar-collapse { transition: none !important; }
 }
+
+
+/* Botão de videoaulas no header */
+.header-video-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-shrink: 0;
+
+  padding: 14px 20px;
+  margin-left: auto;
+
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow: 0 5px 18px rgba(37,99,235,0.25);
+  transition: background 0.25s ease,
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.header-video-btn:hover {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37,99,235,0.35);
+}
+
+.header-video-btn:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header-video-btn {
+    width: 100%;
+    margin-left: 0;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .header-container {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-video-btn {
+    transition: none;
+  }
+
+  .header-video-btn:hover {
+    transform: none;
+  }
+}
+
+/*Contador*/
+
+/* =========================================
+   CONTADOR DE VISITAS - PÁGINA INICIAL
+   ========================================= */
+
+.visitas-container {
+  max-width: 1100px;
+  margin: 25px auto 35px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.visitas-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 26px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    135deg,
+    #10233f,
+    #1d4ed8
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  color: #ffffff;
+
+  box-shadow: 0 8px 25px rgba(15, 35, 63, 0.15);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.visitas-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(37, 99, 235, 0.22);
+}
+
+/* Brilho decorativo */
+.visitas-card::after {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  right: -40px;
+  top: -50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+/* Ícone */
+.visitas-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: #7dd3fc;
+  font-size: 23px;
+  animation: visitasPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes visitasPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(125, 211, 252, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 0 9px rgba(125, 211, 252, 0);
+  }
+}
+
+/* Textos */
+.visitas-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.visitas-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #bfdbfe;
+}
+
+.visitas-numero {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.visitas-legenda {
+  font-size: 11px;
+  color: #cbd5e1;
+}
+
+/* Carregamento */
+.visitas-loading {
+  display: block;
+  width: 25px;
+  height: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #7dd3fc;
+  border-radius: 50%;
+  animation: visitasSpin 0.8s linear infinite;
+}
+
+@keyframes visitasSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+  .visitas-container {
+    padding: 0 16px;
+    justify-content: flex-end;
+  }
+
+  .visitas-card {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+
+  .visitas-numero {
+    font-size: 27px;
+  }
+
+  .visitas-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .visitas-card,
+  .visitas-icon {
+    animation: none;
+    transition: none;
+  }
+
+  .visitas-card:hover {
+    transform: none;
+  }
+
+  .visitas-loading {
+    animation: none;
+  }
+}
+
+
+/* ===== CARDS FINAIS LADO A LADO ===== */
+
+.gems-section .gems-final-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: stretch;
+  gap: 20px;
+
+  max-width: 1100px;
+  margin: 2.5rem auto 0;
+}
+
+/* Card da orientação pedagógica */
+.gems-section .gems-final-row .gems-footer {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  min-width: 0;
+}
+
+/* Contador à direita */
+.gems-section .gems-final-row .visitas-container {
+  display: flex;
+  align-items: stretch;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Altura alinhada com o card da esquerda */
+.gems-section .gems-final-row .visitas-card {
+  height: 100%;
+  min-width: 250px;
+  margin: 0;
+}
+
+/* Tablets e celulares */
+@media (max-width: 850px) {
+  .gems-section .gems-final-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .gems-section .gems-final-row .visitas-card {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
+/* Corrige a posição ao navegar até o carrossel */
+#gemsCarouselTrack {
+  scroll-margin-top: 150px;
+}

@@ -1957,3 +1957,107 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(section => observer.observe(section));
   }
 });
+
+/*Contador de visitas*/
+
+
+/* =========================================
+   CONTADOR DE VISITAS - PÁGINA INICIAL
+   ========================================= */
+
+document.addEventListener("DOMContentLoaded", async () => {
+
+  const contador = document.getElementById("contador-visitas");
+
+  if (!contador) return;
+
+  // Identificação exclusiva do contador
+  const namespace = "cre-letramento-digital-2026";
+  const key = "pagina-inicial";
+
+  const endpoint =
+    `https://abacus.jasoncameron.dev/hit/${namespace}/${key}`;
+
+  const formatador = new Intl.NumberFormat("pt-BR");
+
+  /* ===== ANIMAÇÃO DOS NÚMEROS ===== */
+
+  function animarContador(total) {
+
+    const reduzirMovimento = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (reduzirMovimento) {
+      contador.textContent = formatador.format(total);
+      return;
+    }
+
+    const duracao = 1600;
+    let inicio = null;
+
+    function atualizar(tempo) {
+
+      if (inicio === null) {
+        inicio = tempo;
+      }
+
+      const progresso = Math.min(
+        (tempo - inicio) / duracao,
+        1
+      );
+
+      // Desaceleração suave
+      const suavizacao =
+        1 - Math.pow(1 - progresso, 4);
+
+      const valor = Math.floor(total * suavizacao);
+
+      contador.textContent = formatador.format(valor);
+
+      if (progresso < 1) {
+        requestAnimationFrame(atualizar);
+      } else {
+        contador.textContent = formatador.format(total);
+      }
+    }
+
+    requestAnimationFrame(atualizar);
+  }
+
+  /* ===== CONSULTA À API ===== */
+
+  try {
+
+    const resposta = await fetch(endpoint, {
+      cache: "no-store"
+    });
+
+    if (!resposta.ok) {
+      throw new Error(
+        `Erro HTTP: ${resposta.status}`
+      );
+    }
+
+    const dados = await resposta.json();
+
+    const total = Number(dados.value);
+
+    if (!Number.isSafeInteger(total) || total < 0) {
+      throw new Error("Valor inválido recebido da API");
+    }
+
+    animarContador(total);
+
+  } catch (erro) {
+
+    console.error(
+      "Erro ao carregar contador de visitas:",
+      erro
+    );
+
+    contador.textContent = "Indisponível";
+    contador.style.fontSize = "16px";
+  }
+
+});
